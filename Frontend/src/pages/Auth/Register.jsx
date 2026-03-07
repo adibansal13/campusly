@@ -43,7 +43,7 @@ const Register = () => {
       alert("User Registered Successfully");
       navigate("/");
     } catch (err) {
-      console.log(err);
+      alert("User already exist");
     }
   };
 

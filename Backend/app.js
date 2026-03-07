@@ -71,12 +71,12 @@ app.use("/drives", driveRoute);
 //User Verfiy/Register Route
 app.use("/", authRoute);
 
-// app.use((err, req, res, next) => {
-//   const statusCode = err.status || 500;
-//   const message = err.message || "Something went wrong";
+app.use((err, req, res, next) => {
+  const statusCode = err.status || 500;
+  const message = err.message || "Something went wrong";
 
-//   res.status(statusCode).json({
-//     success: false,
-//     message: message,
-//   });
-// });
+  res.status(statusCode).json({
+    success: false,
+    message: message,
+  });
+});
