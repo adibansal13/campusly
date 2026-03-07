@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createClub } from "../../services/clubService";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 function CreateClub() {
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const [clubData, setClubData] = useState({
     name: "",
     description: "",
-    password: "",
-    email: "",
   });
 
   const handleChange = e => {
@@ -22,7 +23,7 @@ function CreateClub() {
   const handleSubmit = async e => {
     e.preventDefault();
     try {
-      let d = await createClub(clubData);
+      let d = await createClub(clubData, user._id);
       alert("Club created successfully");
       navigate("/clubs");
     } catch (error) {
@@ -58,30 +59,6 @@ function CreateClub() {
             onChange={handleChange}
             className="w-full border p-2 rounded"
             required
-          />
-        </div>
-
-        {/* Category */}
-        <div>
-          <label className="block mb-1 font-semibold">Password</label>
-          <input
-            type="text"
-            name="password"
-            value={clubData.password}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
-          />
-        </div>
-
-        {/* Email */}
-        <div>
-          <label className="block mb-1 font-semibold">Contact Email</label>
-          <input
-            type="email"
-            name="email"
-            value={clubData.email}
-            onChange={handleChange}
-            className="w-full border p-2 rounded"
           />
         </div>
 

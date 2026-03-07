@@ -14,7 +14,7 @@ const eventRoute = require("./routes/eventRoute");
 const userRoute = require("./routes/userRoute");
 const authRoute = require("./routes/authRoute");
 
-const MONGO_DB = "mongodb://127.0.0.1:27017/EduPulse";
+const MONGO_DB = "mongodb://127.0.0.1:27017/CampusConnect";
 const PORT = 5000;
 
 async function main() {

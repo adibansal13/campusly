@@ -9,9 +9,14 @@ function EventDetail() {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const [event, setEvent] = useState(null);
+  const [registered, setRegistered] = useState(false);
   const [open, setOpen] = useState(false);
   useEffect(() => {
     fetchClub();
+    if (user && user.role === "student") {
+      setRegistered(event && event.attendees?.includes(user._id));
+      console.log(event.attendees.includes(user._id));
+    }
   }, []);
 
   const fetchClub = async () => {
@@ -30,7 +35,6 @@ function EventDetail() {
       alert("Registration failed");
     }
   };
-  const isRegistered = event.maxAttendees.includes(user._id);
 
   if (!event) {
     return <p className="text-center mt-10">Loading...</p>;
@@ -96,7 +100,7 @@ function EventDetail() {
               <span className="bg-sky-700 text-lg text-white px-6 py-2 rounded-lg transition">
                 Seats Full
               </span>
-            ) : isRegistered ? (
+            ) : registered ? (
               <button
                 className="bg-sky-700 text-lg text-white px-6 py-2 rounded-lg transition"
                 disabled

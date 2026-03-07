@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const Club = require("../models/clubs");
+const User = require("../models/users");
 const wrapAsync = require("../utils/wrapAsync");
 const ExpressError = require("../utils/ExpressError");
 
@@ -23,11 +24,20 @@ router.get("/:id", async (req, res) => {
   });
 });
 router.post(
-  "/",
+  "/:id/create",
   wrapAsync(async (req, res) => {
+    let { id } = req.params;
+    let user = await User.findById(id);
     const club = new Club(req.body);
     await club.save();
-
+    if (user.role === "student") {
+      res.status(402).json({
+        success: false,
+        message: "Your dont have access",
+      });
+    }
+    user.clubAdmin = club._id;
+    user.save();
     res.status(201).json({
       success: true,
       message: "Club created successfully",

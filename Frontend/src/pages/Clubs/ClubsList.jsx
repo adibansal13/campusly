@@ -2,8 +2,11 @@ import { useEffect, useState } from "react";
 import { getClubs } from "../../services/clubService";
 import ClubCard from "../../components/ClubCard";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 function ClubsList() {
+  const { user } = useContext(AuthContext);
   const [clubs, setClubs] = useState([]);
 
   useEffect(() => {
@@ -16,15 +19,26 @@ function ClubsList() {
       <div className="col-span-8 flex justify-between">
         <h1 className="text-2xl font-bold ">Clubs</h1>
         <div className="">
-          <Link
-            to={"/clubs/admin/register"}
-            className="bg-blue-500 text-white px-4 py-2 rounded mx-2"
-          >
-            Register Club Admin
-          </Link>
-          <Link className="bg-blue-500 text-white px-4 py-2 rounded">
-            Create Club
-          </Link>
+          {user && user.role === "admin" ? (
+            <Link
+              to={"/clubs/admin/register"}
+              className="bg-blue-500 text-white px-4 py-2 rounded mx-2"
+            >
+              Register Club Admin
+            </Link>
+          ) : (
+            <></>
+          )}
+          {user && !user.clubAdmin && user.role === "club" ? (
+            <Link
+              to={"/clubs/create"}
+              className="bg-blue-500 text-white px-4 py-2 rounded"
+            >
+              Create Club
+            </Link>
+          ) : (
+            <></>
+          )}
         </div>
       </div>
       {clubs.map(club => (

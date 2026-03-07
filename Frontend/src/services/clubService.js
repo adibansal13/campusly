@@ -11,8 +11,8 @@ export const getClubById = id => {
 };
 
 // Create club
-export const createClub = clubData => {
-  return API.post("/clubs", clubData);
+export const createClub = (clubData, id) => {
+  return API.post(`/clubs/${id}/create`, clubData);
 };
 
 // Update club

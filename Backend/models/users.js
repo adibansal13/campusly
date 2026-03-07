@@ -17,7 +17,9 @@ const UserSchema = new mongoose.Schema({
   registeredDrives: [
     { type: mongoose.Schema.Types.ObjectId, ref: "PlacementDrive" },
   ],
+  clubAdmin: { type: mongoose.Schema.Types.ObjectId, ref: "Club" },
 });
+
 UserSchema.plugin(passportLocalMongoose, { usernameField: "email" });
 const User = mongoose.model("User", UserSchema);
 module.exports = User;

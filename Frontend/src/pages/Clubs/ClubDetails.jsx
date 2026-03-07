@@ -37,8 +37,8 @@ const ClubDetail = () => {
 
           <p className="text-gray-600 mb-4">{club.description}</p>
 
-          <div className="mt-6 flex gap-2">
-            <>
+          {user && user.clubAdmin === club._id ? (
+            <div className="mt-6 flex gap-2">
               <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
                 Edit Club
               </button>
@@ -47,11 +47,11 @@ const ClubDetail = () => {
                 className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
               >
                 Create Event
-              </Link>
-            </>
-
+              </Link>{" "}
+            </div>
+          ) : (
             <></>
-          </div>
+          )}
         </div>
       </div>
       <h3 className="mt-5 text-2xl font-bold">My Events</h3>
