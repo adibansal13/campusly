@@ -22,7 +22,7 @@ const Login = () => {
     e.preventDefault();
 
     login(formData);
-    navigate("clubs");
+    navigate("/");
   };
 
   return (

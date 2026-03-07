@@ -27,7 +27,7 @@ const ClubDetail = () => {
     <div className="max-w-4xl mx-auto p-6">
       <div className="bg-white shadow rounded-xl overflow-hidden">
         <img
-          src="https://market-resized.envatousercontent.com/previews/files/642805653/Preview.jpg?w=590&h=590&cf_fit=crop&crop=top&format=auto&q=85&s=f0f598dc840e85714af1814bea1fd7f74e4c40ff273b5403b95a16816623b968"
+          src={club.img}
           alt={club.name}
           className="w-full h-72 object-cover"
         />
@@ -42,12 +42,12 @@ const ClubDetail = () => {
               <button className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
                 Edit Club
               </button>
-              <Link
+              <button
                 to={`/events/${club._id}/create`}
                 className="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600"
               >
                 Create Event
-              </Link>{" "}
+              </button>{" "}
             </div>
           ) : (
             <></>

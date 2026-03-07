@@ -19,7 +19,12 @@ export const createPlacement = placementData => {
 export const updatePlacement = (id, placementData) => {
   return API.put(`/drives/${id}`, placementData);
 };
-
+export const updatePlacementRegister = (id, userId) => {
+  return API.patch(`/drives/${id}/register/${userId}`);
+};
+export const isRegister = id => {
+  return API.get(`/drives/${id}/isregister`);
+};
 // Delete placement
 export const deletePlacement = id => {
   return API.delete(`/drives/${id}`);

@@ -23,6 +23,10 @@ export const updateEvent = (id, eventData) => {
 export const updateEventRgister = (id, userId) => {
   return API.patch(`/events/${id}/register/${userId}`);
 };
+// Update register
+export const isRegister = id => {
+  return API.get(`/events/${id}/isregister`);
+};
 
 // Delete event
 export const deleteEvent = id => {

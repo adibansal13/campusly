@@ -5,6 +5,26 @@ const Club = require("../models/clubs");
 const User = require("../models/users");
 const wrapAsync = require("../utils/wrapAsync");
 const ExpressError = require("../utils/ExpressError");
+const nodemailer = require("nodemailer");
+
+const sendConfirmationEmail = async (email, eventName) => {
+  const transporter = nodemailer.createTransport({
+    service: "gmail",
+    auth: {
+      user: "CampusConnect246@gmail.com",
+      pass: "kkly towb kbbv smoa",
+    },
+  });
+
+  const mailOptions = {
+    from: "CampusConnect246@gmail.com",
+    to: email,
+    subject: "Event Registration Confirmation",
+    text: `You have successfully registered for ${eventName}`,
+  };
+
+  await transporter.sendMail(mailOptions);
+};
 
 router.get(
   "/",
@@ -40,7 +60,13 @@ router.get(
     });
   }),
 );
-
+router.get("/:id/isregister", async (req, res) => {
+  let { id } = req.params;
+  const userId = req.user._id;
+  const event = await Event.findById(id);
+  const registered = event.attendees.includes(userId);
+  res.json({ registered });
+});
 router.post(
   "/:clubId",
   wrapAsync(async (req, res) => {
@@ -51,7 +77,6 @@ router.post(
     console.log(event);
     club.events.push(event);
     await club.save();
-
     res.status(201).json({
       success: true,
       message: "Club created successfully",
@@ -69,6 +94,8 @@ router.patch(
     await event.save();
     user.registeredEvents.push(event);
     await user.save();
+
+    await sendConfirmationEmail(user.email, event.title);
 
     res.status(201).json({
       success: true,

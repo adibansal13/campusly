@@ -15,7 +15,7 @@ function PlacementList() {
     <div className="p-6">
       <h1 className="text-2xl font-bold mb-3">Placement Drives</h1>
 
-      <div className="grid grid-cols-3 gap-4">
+      <div className="grid grid-cols-2 gap-4">
         {placements.map(placement => (
           <PlacementCard drive={placement} key={placement._id} />
         ))}

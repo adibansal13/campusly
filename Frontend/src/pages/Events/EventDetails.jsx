@@ -1,5 +1,9 @@
 import { useParams, Link, useNavigate } from "react-router-dom";
-import { getEventById, updateEventRgister } from "../../services/eventService";
+import {
+  getEventById,
+  updateEventRgister,
+  isRegister,
+} from "../../services/eventService";
 import { useEffect, useState } from "react";
 import { useContext } from "react";
 import { AuthContext } from "../../context/AuthContext";
@@ -12,22 +16,26 @@ function EventDetail() {
   const [registered, setRegistered] = useState(false);
   const [open, setOpen] = useState(false);
   useEffect(() => {
+    checkRegistration();
     fetchClub();
-    if (user && user.role === "student") {
-      setRegistered(event && event.attendees?.includes(user._id));
-      console.log(event.attendees.includes(user._id));
-    }
   }, []);
-
+  const checkRegistration = async () => {
+    let res = await isRegister(id);
+    setRegistered(res.data.registered);
+  };
   const fetchClub = async () => {
     const { data } = await getEventById(id);
     setEvent(data.data);
+    if (user) {
+      checkIsregister();
+    }
   };
 
   const registerEvent = async () => {
     try {
       let res = await updateEventRgister(id, user._id);
       setOpen(false);
+      setRegistered(true);
       fetchClub();
       alert(res.data.message);
     } catch (err) {

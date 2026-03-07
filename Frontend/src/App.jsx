@@ -28,6 +28,7 @@ import CreatePlacement from "./pages/Placements/CreatePlacement";
 import EditPlacement from "./pages/Placements/EditPlacement";
 
 import Dashboard from "./pages/Dashboard";
+import Home from "./pages/Home";
 
 // Auth
 import Login from "./pages/Auth/Login";
@@ -40,7 +41,7 @@ function App() {
       <div className="container">
         <Routes>
           {/* Home */}
-          {/* <Route path="/" element={<Home />} /> */}
+          <Route path="/" element={<Home />} />
 
           {/* Dashboard */}
           {/* <Route path="/dashboard" element={<Dashboard />} /> */}
