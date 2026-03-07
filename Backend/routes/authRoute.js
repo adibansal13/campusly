@@ -3,17 +3,20 @@ const router = express.Router();
 const passport = require("passport");
 const User = require("../models/users");
 
-router.get("/currUser", (req, res) => {
-  // console.log(req.user);
+router.get("/currUser", async (req, res) => {
   if (!req.user) {
     return res.status(401).json({
       success: false,
       message: "User not logged in",
     });
   }
+  let user = await User.findById(req.user._id)
+    .populate("registeredEvents")
+    .populate("registeredDrives")
+    .populate("clubAdmin");
   res.json({
     success: true,
-    user: req.user,
+    user: user,
   });
 });
 router.post("/register", async (req, res) => {
@@ -22,7 +25,7 @@ router.post("/register", async (req, res) => {
     password,
     email,
     role,
-    branch,
+    branch = "",
     year = "",
     cgpa = "",
     skills = [],

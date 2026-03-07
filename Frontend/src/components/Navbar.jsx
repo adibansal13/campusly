@@ -43,12 +43,15 @@ function Navbar() {
               Placements
             </Link>
           </li>
-
-          <li>
-            <Link to="/dashboard" className="hover:text-sky-400 transition">
-              Dashboard
-            </Link>
-          </li>
+          {user && user.role === "student" ? (
+            <li>
+              <Link to="/dashboard" className="hover:text-sky-400 transition">
+                Dashboard
+              </Link>
+            </li>
+          ) : (
+            <></>
+          )}
         </ul>
 
         {/* Auth Buttons */}

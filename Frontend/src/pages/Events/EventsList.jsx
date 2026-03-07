@@ -13,7 +13,7 @@ function EventsList() {
 
   return (
     <div className="grid grid-cols-8 gap-4">
-      <h1 className="text-2xl font-bold col-span-8">Events</h1>
+      <h1 className="text-2xl font-bold col-span-8 mt-5">Events</h1>
       {events.map(event => (
         <EventCard key={event._id} event={event} />
       ))}

@@ -14,9 +14,7 @@ const UserSchema = new mongoose.Schema({
   skills: [String],
   interests: [String],
   registeredEvents: [{ type: mongoose.Schema.Types.ObjectId, ref: "Event" }],
-  registeredDrives: [
-    { type: mongoose.Schema.Types.ObjectId, ref: "PlacementDrive" },
-  ],
+  registeredDrives: [{ type: mongoose.Schema.Types.ObjectId, ref: "Drive" }],
   clubAdmin: { type: mongoose.Schema.Types.ObjectId, ref: "Club" },
 });
 

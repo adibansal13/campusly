@@ -16,7 +16,7 @@ function ClubsList() {
   }, []);
   return (
     <div className="grid grid-cols-8 gap-4">
-      <div className="col-span-8 flex justify-between">
+      <div className="col-span-8 flex justify-between mt-5">
         <h1 className="text-2xl font-bold ">Clubs</h1>
         <div className="">
           {user && user.role === "admin" ? (

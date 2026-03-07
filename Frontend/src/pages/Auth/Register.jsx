@@ -41,7 +41,7 @@ const Register = () => {
       let res = await registerUser(formattedData);
       setUser(res.data.user);
       alert("User Registered Successfully");
-      navigate("/clubs");
+      navigate("/");
     } catch (err) {
       console.log(err);
     }
