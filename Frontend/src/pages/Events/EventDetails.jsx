@@ -51,21 +51,17 @@ function EventDetail() {
   return (
     <div className=" bg-gray-100 py-10 px-6">
       <div className="max-w-5xl mx-auto bg-white shadow-lg rounded-xl overflow-hidden">
-        {/* Event Image */}
         <img src={event.img} alt="event" className="w-full h-80 object-cover" />
 
-        {/* Event Content */}
         <div className="p-8">
-          {/* Title */}
           <h1 className="text-3xl font-bold text-gray-800 mb-2">
             {event.title}
           </h1>
-          {/* Description */}
+
           <div className="mb-2">
             <p className="text-gray-600 leading-relaxed">{event.description}</p>
           </div>
 
-          {/* Event Info */}
           <div className="grid md:grid-cols-2 gap-1 text-gray-700 mb-2">
             <p>
               <span className="font-semibold">Club:</span> {event.club}
@@ -102,7 +98,6 @@ function EventDetail() {
             </span>
           </div>
 
-          {/* Buttons */}
           <div className="flex gap-4">
             {event.maxAttendees == event.attendees.length ? (
               <span className="bg-sky-700 text-lg text-white px-6 py-2 rounded-lg transition">

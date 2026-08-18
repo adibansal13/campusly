@@ -9,7 +9,6 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local");
 
 const clubRoute = require("./routes/clubRoute");
-const driveRoute = require("./routes/driveRoute");
 const eventRoute = require("./routes/eventRoute");
 const userRoute = require("./routes/userRoute");
 const authRoute = require("./routes/authRoute");
@@ -22,7 +21,7 @@ async function main() {
   console.log("Database connection successful");
 }
 
-main().catch(err => console.error("Database connection error:", err));
+main().catch((err) => console.error("Database connection error:", err));
 
 app.use(
   cors({
@@ -66,8 +65,6 @@ app.use("/clubs", clubRoute);
 app.use("/events", eventRoute);
 //User Route
 app.use("/users", userRoute);
-//Placemnt Drive Route
-app.use("/drives", driveRoute);
 //User Verfiy/Register Route
 app.use("/", authRoute);
 

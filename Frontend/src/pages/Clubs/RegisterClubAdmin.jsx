@@ -68,8 +68,6 @@ const RegisterClubAdmin = () => {
           required
         />
 
-        {/* Branch */}
-
         <input
           type="text"
           name="branch"

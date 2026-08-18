@@ -14,6 +14,7 @@ router.get("/currUser", async (req, res) => {
     .populate("registeredEvents")
     .populate("registeredDrives")
     .populate("clubAdmin");
+  console.log(user);
   res.json({
     success: true,
     user: user,

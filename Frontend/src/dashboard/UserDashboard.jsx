@@ -5,17 +5,38 @@ import { AuthContext } from "../context/AuthContext";
 
 const UserDashboard = () => {
   const { user } = useContext(AuthContext);
+  console.log(user);
 
   return (
     <div className="">
-      <main className="max-w-7xl mx-auto p-8">
-        <div className="mb-8">
-          <h1 className="text-2xl font-bold text-slate-800">
-            Welcome back, {user?.name}!
-          </h1>
-          <p className="text-slate-500">
-            Here is what's happening with your campus profile today.
-          </p>
+      <main className="p-8">
+        <div className="mb-8 flex justify-between">
+          <div>
+            <h1 className="text-2xl font-bold text-slate-800">
+              Welcome back, {user?.name}!
+            </h1>
+            <p className="text-slate-500">
+              Here is what's happening with your campus profile today.
+            </p>
+          </div>
+          <div className="flex ">
+            <div>
+              <div className="p-3 bg-white rounded-xl ms-4">
+                <h3 className="font-bold">Total Registered Events </h3>
+                <p className="text-center text-slate-500">
+                  {user?.registeredEvents.length}
+                </p>
+              </div>
+            </div>
+            <div>
+              <div className="p-3 bg-white rounded-xl ms-4">
+                <h3 className="font-bold">Total Applied Placements </h3>
+                <p className="text-center text-slate-500">
+                  {user?.registeredDrives.length}
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

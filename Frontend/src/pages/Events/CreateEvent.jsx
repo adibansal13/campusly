@@ -28,7 +28,7 @@ const CreateEvent = () => {
 
     const formattedData = {
       ...eventData,
-      tags: eventData.tags.split(","), // convert string → array
+      tags: eventData.tags.split(","),
       maxAttendees: Number(eventData.maxAttendees),
     };
     console.log(formattedData);

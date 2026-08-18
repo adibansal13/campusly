@@ -13,12 +13,10 @@ function Navbar() {
   return (
     <nav className="bg-[#061944] text-white shadow-md fixed w-screen">
       <div className="max-w-7xl mx-auto px-6 py-2 flex justify-between items-center ">
-        {/* Logo */}
         <div className="text-2xl font-bold">
           <img src="public/logo.png" alt="Logo" className="w-50" />
         </div>
 
-        {/* Navigation Links */}
         <ul className="flex gap-8 text-lg">
           <li>
             <Link to="/" className="hover:text-sky-400 transition">
@@ -38,11 +36,6 @@ function Navbar() {
             </Link>
           </li>
 
-          <li>
-            <Link to="/placements" className="hover:text-sky-400 transition">
-              Placements
-            </Link>
-          </li>
           {user && user.role === "student" ? (
             <li>
               <Link to="/dashboard" className="hover:text-sky-400 transition">
@@ -54,7 +47,6 @@ function Navbar() {
           )}
         </ul>
 
-        {/* Auth Buttons */}
         <div className="flex gap-4">
           {!user ? (
             <>
