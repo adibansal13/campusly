@@ -130,7 +130,7 @@ MongoDB
 ```text
 campus-connect/
 │
-├── client/
+├── Frontend/
 │   ├── public/
 │   └── src/
 │       ├── components/
@@ -140,7 +140,7 @@ campus-connect/
 │       ├── App.jsx
 │       └── main.jsx
 │
-├── server/
+├── Backend/
 │   ├── controllers/
 │   ├── models/
 │   ├── routes/
