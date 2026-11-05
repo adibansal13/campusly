@@ -7,7 +7,7 @@ const Login = () => {
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    email: "",
+    email: " ",
     password: "",
   });
 
